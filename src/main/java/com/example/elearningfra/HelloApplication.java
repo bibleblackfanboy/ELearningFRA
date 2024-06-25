@@ -11,7 +11,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class HelloApplication extends Application {
-
+//Hallo
     private static Stage ourstage;
 
     public static Stage getOurstage() {
