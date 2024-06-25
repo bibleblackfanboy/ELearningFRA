@@ -1,0 +1,71 @@
+.root {
+    -fx-background-color: linear-gradient(to bottom, #f5f7fa, #c3cfe2);
+    -fx-padding: 10;
+}
+
+.label {
+    -fx-text-fill: #333333;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.text-field, .combo-box, .check-box {
+    -fx-font-size: 12px;
+    -fx-padding: 5;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d1d1d1;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.button {
+    -fx-background-color: #4682B4;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-padding: 8 16;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 5, 0.5, 0, 0);
+}
+
+.button:hover {
+    -fx-background-color: #5a9bd4;
+}
+
+#saveButton {
+    -fx-background-color: #32CD32;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-padding: 8 16;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 5, 0.5, 0, 0);
+}
+
+#saveButton:hover {
+    -fx-background-color: #228B22;
+}
+
+#backButton {
+    -fx-background-color: #FF6347;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-padding: 8 16;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 5, 0.5, 0, 0);
+}
+
+#backButton:hover {
+    -fx-background-color: #FF4500;
+}
+
+.scroll-pane {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d1d1d1;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.elearningfra.NewUserController">
+    <stylesheets>
+        <URL value="@styles.css" />
+    </stylesheets>
+    <VBox alignment="CENTER" layoutX="200.0" layoutY="150.0" prefWidth="400.0" spacing="20.0">
+        <Label styleClass="title-label" text="Create New User" />
+        <GridPane alignment="CENTER" hgap="10" vgap="10">
+            <padding>
+                <Insets bottom="25" left="25" right="25" top="25" />
+            </padding>
+            <Label styleClass="input-label" text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="newUsernameField" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <Label styleClass="input-label" text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <TextField fx:id="newPasswordField" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label styleClass="input-label" text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField fx:id="newEmailField" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <HBox alignment="CENTER" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                <Button fx:id="saveButton" styleClass="login-button" text="Save" onAction="#handleSave" />
+                <Button fx:id="backButton" styleClass="cancel-button" text="Back" onAction="#handleBack" />
+            </HBox>
+            <columnConstraints>
+                <ColumnConstraints />
+                <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+            </rowConstraints>
+        </GridPane>
+        <Label fx:id="statusLabel" styleClass="status-label" />
+    </VBox>
+</AnchorPane>

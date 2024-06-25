@@ -1,0 +1,54 @@
+.root {
+    -fx-background-color: linear-gradient(to bottom, #87CEEB, #4682B4);
+    -fx-padding: 20;
+}
+
+.title-label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 37px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75), 5, 0.5, 0, 0);
+}
+
+.button {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #000000;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 5, 0.5, 0, 0);
+}
+
+.button:hover {
+    -fx-background-color: #E0FFFF;
+}
+
+#settingsButton {
+    -fx-background-color: #FF6347;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 5, 0.5, 0, 0);
+}
+
+#settingsButton:hover {
+    -fx-background-color: #FF4500;
+}
+
+#semester1Button, #semester2Button, #semester3Button, #semester4Button, #semester5Button, #semester6Button {
+    -fx-background-color: #87CEEB;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 5, 0.5, 0, 0);
+}
+
+#semester1Button:hover, #semester2Button:hover, #semester3Button:hover, #semester4Button:hover, #semester5Button:hover, #semester6Button:hover {
+    -fx-background-color: #4682B4;
+}
