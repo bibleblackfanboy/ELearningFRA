@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
@@ -18,10 +17,9 @@
 <AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@styles7.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.elearningfra.EditModuleController">
     <HBox spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
         <!-- Sol Panel: Ders Bilgileri -->
-        <VBox prefWidth="400.0" spacing="5.0">
-            <Label text="Module Name:" />
-            <TextField fx:id="moduleNameField" styleClass="text-field-error" />
-
+        <VBox prefWidth="400.0" spacing="5.0" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+            <Label text="Module Name:" fx:id="moduleNameLabel"/>
+            <TextField fx:id="moduleNameField" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS"/>
             <GridPane hgap="10" vgap="5">
                 <Label text="CP:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                 <ComboBox fx:id="cpField" GridPane.columnIndex="1" GridPane.rowIndex="0">
@@ -60,37 +58,34 @@
                     <RowConstraints />
                 </rowConstraints>
             </GridPane>
-
             <Label text="Prüfung:" />
-            <TextField fx:id="pruefungField" />
+            <TextField fx:id="pruefungField" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS"/>
             <Label text="Sprache:" />
-            <TextField fx:id="spracheField" />
-            <Label text="Koordination:" />
-            <TextField fx:id="koordinationField" styleClass="text-field-error" />
+            <TextField fx:id="spracheField" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS"/>
+            <Label text="Koordination:" fx:id="koordinationLabel"/>
+            <TextField fx:id="koordinationField" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS"/>
             <Label text="Verfügbarkeit:" />
-            <TextField fx:id="verfuegbarkeitField" />
-            <Label text="Voraussetzung:" />
-            <TextField fx:id="voraussetzungField" styleClass="text-field-error" />
-            <!-- Hata Mesajı Etiketi -->
-            <Label fx:id="errorMessage" prefHeight="50.0" prefWidth="399.0" styleClass="error-message" visible="false" />
+            <TextField fx:id="verfuegbarkeitField" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS"/>
+            <Label text="Voraussetzung:" fx:id="voraussetzungLabel"/>
+            <TextField fx:id="voraussetzungField" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS"/>
         </VBox>
         <!-- Sağ Panel: Profesör ve Material Bilgileri -->
-        <VBox prefWidth="350.0" spacing="5.0">
+        <VBox prefWidth="350.0" spacing="5.0" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
             <Label text="Professor Details:" />
-            <ScrollPane fitToWidth="true" prefHeight="100.0" styleClass="scroll-pane">
+            <ScrollPane fitToWidth="true" fitToHeight="true" prefHeight="100.0" styleClass="scroll-pane" VBox.vgrow="ALWAYS">
                 <VBox fx:id="professorContainer" spacing="5.0" />
             </ScrollPane>
-            <Button fx:id="addProfessorButton" onAction="#handleAddProfessor" text="Add Professor" />
+            <Button fx:id="addProfessorButton" text="Add Professor" onAction="#handleAddProfessor" />
             <Label text="Material Details:" />
-            <ScrollPane fitToWidth="true" prefHeight="100.0" styleClass="scroll-pane">
+            <ScrollPane fitToWidth="true" fitToHeight="true" prefHeight="100.0" styleClass="scroll-pane" VBox.vgrow="ALWAYS">
                 <VBox fx:id="materialContainer" spacing="5.0" />
             </ScrollPane>
-            <Button fx:id="addMaterialButton" onAction="#handleAddMaterial" text="Add Material" />
+            <Button fx:id="addMaterialButton" text="Add Material" onAction="#handleAddMaterial" />
             <Label text="Inhalt:" />
-            <TextField fx:id="inhaltField" prefHeight="105.0" prefWidth="350.0" />
+            <TextField fx:id="inhaltField" prefHeight="105.0" prefWidth="350.0" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS"/>
             <Button fx:id="backButton" onAction="#back" text="Back" />
-            <!-- Butonlar -->
             <Button fx:id="saveButton" onAction="#handleSaveButton" text="Save" />
+            <Label fx:id="errorMessageLabel" textFill="red" visible="false"/>
         </VBox>
     </HBox>
 </AnchorPane>

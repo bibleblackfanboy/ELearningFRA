@@ -71,13 +71,13 @@
 }
 
 
-
-.text-field-error {
-    -fx-border-color: red;
-    -fx-border-width: 2px;
+#errorMessageLabel
+{
+-fx-text-fill: red;
 }
 
-.error-message {
-    -fx-text-fill: red;
 
+
+.error-label {
+    -fx-text-fill: red;
 }

@@ -1,33 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="600" prefWidth="800" stylesheets="@styles2.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.elearningfra.ModulSelectController">
-   <children>
-      <Button fx:id="backButton" layoutX="691.0" layoutY="550.0" mnemonicParsing="false" onAction="#switchToHome" text="Back" />
-      <AnchorPane fx:id="anchorPane" layoutX="152.0" layoutY="113.0" prefHeight="401.0" prefWidth="290.0" />
-      <ImageView fitHeight="102.0" fitWidth="110.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@frankfurtuas_logo.jpeg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="162.0" fitWidth="284.0" layoutX="465.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@geb2.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="108.0" fitWidth="283.0" layoutX="466.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@bcn.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="199.0" fitWidth="284.0" layoutX="466.0" layoutY="339.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@cafe1.jpg" />
-         </image>
-      </ImageView>
-   </children>
+    <children>
+        <Button fx:id="backButton" mnemonicParsing="false" onAction="#switchToHome" text="Back" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+        <AnchorPane fx:id="anchorPane" prefHeight="401.0" prefWidth="290.0" AnchorPane.topAnchor="100.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="250.0" />
+        <ImageView fitHeight="102.0" fitWidth="110.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@frankfurtuas_logo.jpeg" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="162.0" fitWidth="284.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="20.0" AnchorPane.rightAnchor="10.0">
+            <image>
+                <Image url="@geb2.jpg" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="108.0" fitWidth="283.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="200.0" AnchorPane.rightAnchor="10.0">
+            <image>
+                <Image url="@bcn.jpg" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="199.0" fitWidth="284.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="10.0">
+            <image>
+                <Image url="@cafe1.jpg" />
+            </image>
+        </ImageView>
+    </children>
 </AnchorPane>

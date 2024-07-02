@@ -1,6 +1,5 @@
 package com.example.elearningfra;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -11,41 +10,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EditModuleController {
-
-    @FXML
-    private TextField moduleNameField;
-    @FXML
-    private ComboBox<String> cpField;
-    @FXML
-    private TextField pruefungField;
-    @FXML
-    private ComboBox<String> semesterField;
-    @FXML
-    private TextField spracheField;
-    @FXML
-    private TextField koordinationField;
-    @FXML
-    private TextField verfuegbarkeitField;
-    @FXML
-    private TextField voraussetzungField;
-    @FXML
-    private CheckBox vorleistungField;
-    @FXML
-    private TextField inhaltField;
-    @FXML
-    private VBox professorContainer;
-    @FXML
-    private VBox materialContainer;
-    @FXML
-    private Button saveButton;
-    @FXML
-    private Button addProfessorButton;
-    @FXML
-    private Button addMaterialButton;
-    @FXML
-    private Button backButton;
-    @FXML
-    private Label errorMessage;
+    @FXML private TextField moduleNameField;
+    @FXML private ComboBox<String> cpField;
+    @FXML private TextField pruefungField;
+    @FXML private ComboBox<String> semesterField;
+    @FXML private TextField spracheField;
+    @FXML private TextField koordinationField;
+    @FXML private TextField verfuegbarkeitField;
+    @FXML private TextField voraussetzungField;
+    @FXML private CheckBox vorleistungField;
+    @FXML private TextField inhaltField;
+    @FXML private VBox professorContainer;
+    @FXML private VBox materialContainer;
+    @FXML private Button saveButton;
+    @FXML private Button addProfessorButton;
+    @FXML private Button addMaterialButton;
+    @FXML private Button backButton;
+    @FXML private Label errorMessageLabel;
+    @FXML private Label moduleNameLabel;
+    @FXML private Label koordinationLabel;
+    @FXML private Label voraussetzungLabel;
 
     private int modulId;
     private List<Professor> professors = new ArrayList<>();
@@ -56,7 +40,7 @@ public class EditModuleController {
         cpField.setValue("5");
         semesterField.getItems().addAll("1", "2", "3", "4", "5", "6");
         semesterField.setValue("1");
-        setFieldsDisabled(false);  // Sayfa açıldığında alanları aktif hale getiriyoruz
+        setFieldsDisabled(false); // Sayfa açıldığında alanları aktif hale getiriyoruz
     }
 
     public void loadModuleDetails(int modulId) {
@@ -74,15 +58,12 @@ public class EditModuleController {
                 voraussetzungField.setText(modulDetails.getVoraussetzung());
                 vorleistungField.setSelected(modulDetails.isVorleistung());
                 inhaltField.setText(modulDetails.getInhalt());
-
                 professors = Database.getProfessorsForModul(modulId);
                 materials = Database.getMaterialsForModul(modulId);
-
                 professorContainer.getChildren().clear();
                 for (Professor professor : professors) {
                     addProfessorToUI(professor);
                 }
-
                 materialContainer.getChildren().clear();
                 for (Material material : materials) {
                     addMaterialToUI(material);
@@ -99,7 +80,6 @@ public class EditModuleController {
         TextField emailField = new TextField(professor.getEmail());
         TextField sprechzimmerField = new TextField(professor.getSprechzimmer());
         Button deleteButton = new Button("Delete");
-
         deleteButton.setOnAction(e -> {
             professorContainer.getChildren().remove(nachnameField);
             professorContainer.getChildren().remove(vornameField);
@@ -113,12 +93,10 @@ public class EditModuleController {
                 ex.printStackTrace();
             }
         });
-
         nachnameField.textProperty().addListener((observable, oldValue, newValue) -> professor.setNachname(newValue));
         vornameField.textProperty().addListener((observable, oldValue, newValue) -> professor.setVorname(newValue));
         emailField.textProperty().addListener((observable, oldValue, newValue) -> professor.setEmail(newValue));
         sprechzimmerField.textProperty().addListener((observable, oldValue, newValue) -> professor.setSprechzimmer(newValue));
-
         professorContainer.getChildren().addAll(
                 new Label("Nachname:"), nachnameField,
                 new Label("Vorname:"), vornameField,
@@ -134,7 +112,6 @@ public class EditModuleController {
         TextField beschreibungField = new TextField(material.getBeschreibung());
         TextField urlField = new TextField(material.getUrl());
         Button deleteButton = new Button("Delete");
-
         deleteButton.setOnAction(e -> {
             materialContainer.getChildren().remove(typField);
             materialContainer.getChildren().remove(themaField);
@@ -148,12 +125,10 @@ public class EditModuleController {
                 ex.printStackTrace();
             }
         });
-
         typField.textProperty().addListener((observable, oldValue, newValue) -> material.setTyp(newValue));
         themaField.textProperty().addListener((observable, oldValue, newValue) -> material.setThema(newValue));
         beschreibungField.textProperty().addListener((observable, oldValue, newValue) -> material.setBeschreibung(newValue));
         urlField.textProperty().addListener((observable, oldValue, newValue) -> material.setUrl(newValue));
-
         materialContainer.getChildren().addAll(
                 new Label("Typ:"), typField,
                 new Label("Thema:"), themaField,
@@ -165,97 +140,70 @@ public class EditModuleController {
 
     @FXML
     private void handleSaveButton() {
-        String moduleName = moduleNameField.getText();
-        String koordination = koordinationField.getText();
-        String voraussetzung = voraussetzungField.getText();
+        boolean hasError = false;
+        errorMessageLabel.setVisible(false);
 
-        // Required fields validation
-        boolean isValid = true;
-
-        if (moduleName.isEmpty()) {
-            moduleNameField.getStyleClass().add("text-field-error");
-            isValid = false;
+        if (moduleNameField.getText().isEmpty()) {
+            moduleNameLabel.getStyleClass().add("error-label");
+            hasError = true;
         } else {
-            moduleNameField.getStyleClass().remove("text-field-error");
+            moduleNameLabel.getStyleClass().removeAll("error-label");
         }
 
-        if (koordination.isEmpty()) {
-            koordinationField.getStyleClass().add("text-field-error");
-            isValid = false;
+        if (koordinationField.getText().isEmpty()) {
+            koordinationLabel.getStyleClass().add("error-label");
+            hasError = true;
         } else {
-            koordinationField.getStyleClass().remove("text-field-error");
+            koordinationLabel.getStyleClass().removeAll("error-label");
         }
 
-        if (voraussetzung.isEmpty()) {
-            voraussetzungField.getStyleClass().add("text-field-error");
-            isValid = false;
+        if (voraussetzungField.getText().isEmpty()) {
+            voraussetzungLabel.getStyleClass().add("error-label");
+            hasError = true;
         } else {
-            voraussetzungField.getStyleClass().remove("text-field-error");
+            voraussetzungLabel.getStyleClass().removeAll("error-label");
         }
 
-        boolean atLeastOneProfessorValid = professors.stream().anyMatch(p -> !p.getNachname().isEmpty());
-        if (!atLeastOneProfessorValid) {
-            errorMessage.setText("Please add at least one professor with a valid last name.");
-            errorMessage.setVisible(true);
-            Platform.runLater(() -> {
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                errorMessage.setVisible(false);
-            });
-            isValid = false;
-        }
-
-        if (!isValid) {
-            errorMessage.setText("Please fill in all required fields.");
-            errorMessage.setVisible(true);
-            Platform.runLater(() -> {
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                errorMessage.setVisible(false);
-            });
+        if (hasError) {
+            errorMessageLabel.setText("Please fill in all required fields.");
+            errorMessageLabel.setVisible(true);
             return;
         }
 
-        try {
-            int cp = Integer.parseInt(cpField.getValue());
-            String pruefung = pruefungField.getText();
-            int semester = Integer.parseInt(semesterField.getValue());
-            String sprache = spracheField.getText();
-            String verfuegbarkeit = verfuegbarkeitField.getText();
-            boolean vorleistung = vorleistungField.isSelected();
-            String inhalt = inhaltField.getText();
+        String moduleName = moduleNameField.getText();
+        int cp = Integer.parseInt(cpField.getValue());
+        String pruefung = pruefungField.getText();
+        int semester = Integer.parseInt(semesterField.getValue());
+        String sprache = spracheField.getText();
+        String koordination = koordinationField.getText();
+        String verfuegbarkeit = verfuegbarkeitField.getText();
+        String voraussetzung = voraussetzungField.getText();
+        boolean vorleistung = vorleistungField.isSelected();
+        String inhalt = inhaltField.getText();
 
+        try {
             // Güncellemeleri yapıyoruz
             Database.updateModule(modulId, moduleName, cp, pruefung, semester, sprache, koordination, verfuegbarkeit, voraussetzung, vorleistung, inhalt);
-
             // Mevcut professor ve material bilgilerini güncelliyoruz
             for (Professor professor : professors) {
                 Database.updateProfessor(professor);
             }
-
             for (Material material : materials) {
                 Database.updateMaterial(material);
             }
-
             // Yeni eklenen professor ve material bilgilerini ekliyoruz
             for (Professor professor : professors) {
-                if (professor.getProfessorId() == 0) {  // Yeni eklenen professor
+                if (professor.getProfessorId() == 0) {
+                    // Yeni eklenen professor
                     Database.addProfessor(professor, modulId);
                 }
             }
-
             for (Material material : materials) {
-                if (material.getMaterialId() == 0) {  // Yeni eklenen material
+                if (material.getMaterialId() == 0) {
+                    // Yeni eklenen material
                     Database.addMaterial(material, modulId);
                 }
             }
-
             setFieldsDisabled(true);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -264,14 +212,14 @@ public class EditModuleController {
 
     @FXML
     private void handleAddProfessor() {
-        Professor newProfessor = new Professor(0, "", "", "", "");  // Dummy values
+        Professor newProfessor = new Professor(0, "", "", "", ""); // Dummy values
         professors.add(newProfessor);
         addProfessorToUI(newProfessor);
     }
 
     @FXML
     private void handleAddMaterial() {
-        Material newMaterial = new Material(0, modulId, "", "", "", "");  // Dummy values
+        Material newMaterial = new Material(0, modulId, "", "", "", ""); // Dummy values
         materials.add(newMaterial);
         addMaterialToUI(newMaterial);
     }
@@ -320,11 +268,9 @@ public class EditModuleController {
         materialContainer.getChildren().clear();
         professors.clear();
         materials.clear();
-        setFieldsDisabled(false);  // Geri dönerken formu aktif hale getiriyoruz
-        errorMessage.setVisible(false); // Hata mesajını gizle
+        setFieldsDisabled(false);
     }
 }
-
 
 
 

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
@@ -22,7 +21,6 @@
             <Label text="Module Name:" />
             <TextField fx:id="moduleNameField" VBox.vgrow="ALWAYS" styleClass="required-field" />
             <Label text="*" styleClass="required-star"/>
-
             <GridPane hgap="10" vgap="5">
                 <Label text="CP:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                 <ComboBox fx:id="cpField" GridPane.columnIndex="1" GridPane.rowIndex="0">
@@ -61,7 +59,6 @@
                     <RowConstraints />
                 </rowConstraints>
             </GridPane>
-
             <Label text="Prüfung:" />
             <TextField fx:id="pruefungField" />
             <Label text="Sprache:" />
@@ -76,19 +73,19 @@
             <Label text="*" styleClass="required-star"/>
         </VBox>
         <!-- Sağ Panel: Profesör ve Material Bilgileri -->
-        <VBox prefHeight="507.0" prefWidth="350.0" spacing="5.0" HBox.hgrow="ALWAYS">
+        <VBox prefHeight="507.0" prefWidth="350.0" spacing="5.0" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
             <Label text="Professor Details:" />
             <Button fx:id="addProfessorButton" onAction="#handleAddProfessorButton" text="Add Professor" />
-            <ScrollPane fitToWidth="true" prefHeight="100.0" styleClass="scroll-pane">
+            <ScrollPane fitToWidth="true" fitToHeight="true" prefHeight="100.0" styleClass="scroll-pane" VBox.vgrow="ALWAYS">
                 <VBox fx:id="professorContainer" spacing="5.0" />
             </ScrollPane>
             <Label text="Material Details:" />
             <Button fx:id="addMaterialButton" onAction="#handleAddMaterialButton" text="Add Material" />
-            <ScrollPane fitToWidth="true" prefHeight="100.0" styleClass="scroll-pane">
+            <ScrollPane fitToWidth="true" fitToHeight="true" prefHeight="100.0" styleClass="scroll-pane" VBox.vgrow="ALWAYS">
                 <VBox fx:id="materialContainer" spacing="5.0" />
             </ScrollPane>
             <Label text="Inhalt:" />
-            <TextField fx:id="inhaltField" prefHeight="67.0" prefWidth="350.0" />
+            <TextField fx:id="inhaltField" prefHeight="67.0" prefWidth="350.0" VBox.vgrow="ALWAYS"/>
             <Button fx:id="backButton" onAction="#back" text="Back" />
             <!-- Butonlar -->
             <Button fx:id="saveButton" onAction="#handleSaveButton" text="Save" />
@@ -96,4 +93,3 @@
         </VBox>
     </HBox>
 </AnchorPane>
-
