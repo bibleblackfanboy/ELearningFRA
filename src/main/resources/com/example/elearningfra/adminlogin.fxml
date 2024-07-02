@@ -17,7 +17,7 @@
     <stylesheets>
         <URL value="@styles.css" />
     </stylesheets>
-    <VBox alignment="CENTER" layoutX="200.0" layoutY="150.0" prefWidth="400.0" spacing="20.0">
+    <VBox alignment="CENTER" spacing="20.0" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
         <Label styleClass="title-label" text="Admin Login" />
         <GridPane alignment="CENTER" hgap="10" vgap="10">
             <padding>
@@ -30,7 +30,7 @@
             <HBox alignment="CENTER" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                 <Button fx:id="loginButton" styleClass="login-button" text="Login" onAction="#handleLogin" />
                 <Button fx:id="cancelButton" styleClass="cancel-button" text="Cancel" onAction="#handleCancel" />
-                <Button fx:id="newUserButton" styleClass="newuser-button" text="New User" onAction="#switchToNewUser" />
+
             </HBox>
             <columnConstraints>
                 <ColumnConstraints />
@@ -46,3 +46,4 @@
         <Button fx:id="backButton" styleClass="back-button" text="Back" onAction="#switchToHome" />
     </VBox>
 </AnchorPane>
+

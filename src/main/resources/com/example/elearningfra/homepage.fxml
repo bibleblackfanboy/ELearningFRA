@@ -9,27 +9,57 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@styles3.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.elearningfra.HomepageController">
     <children>
-        <ImageView fx:id="imageView" fitHeight="104.0" fitWidth="165.0" layoutX="75.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="imageView" fitHeight="104.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@frankfurtuas_logo.jpeg" />
             </image>
+            <AnchorPane.topAnchor>10.0</AnchorPane.topAnchor>
+            <AnchorPane.leftAnchor>10.0</AnchorPane.leftAnchor>
         </ImageView>
-        <ImageView fitHeight="445.0" fitWidth="434.0" layoutX="248.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="445.0" fitWidth="434.0" layoutX="237.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@eatsleep.jpg" />
             </image>
+            <!--AnchorPane.leftAnchor>200.0</AnchorPane.leftAnchor-->
+            <!--AnchorPane.rightAnchor>500.0</AnchorPane.rightAnchor-->
+            <!--AnchorPane.topAnchor>120.0</AnchorPane.topAnchor-->
+            <!--AnchorPane.bottomAnchor>120.0</AnchorPane.bottomAnchor-->
         </ImageView>
-        <Label alignment="CENTER" layoutX="272.0" layoutY="31.0" prefHeight="87.0" prefWidth="366.0" styleClass="title-label" text="Informatik" textAlignment="RIGHT">
+        <Label alignment="CENTER" prefHeight="87.0" prefWidth="366.0" styleClass="title-label" text="Informatik" textAlignment="RIGHT">
             <font>
                 <Font name="Franklin Gothic Book" size="37.0" />
             </font>
+            <AnchorPane.topAnchor>31.0</AnchorPane.topAnchor>
+            <AnchorPane.leftAnchor>217.0</AnchorPane.leftAnchor>
+            <AnchorPane.rightAnchor>217.0</AnchorPane.rightAnchor>
         </Label>
-        <Button fx:id="settingsButton" layoutX="690.0" layoutY="520.0" mnemonicParsing="false" onAction="#switchToAdmin" prefHeight="46.0" prefWidth="100.0" text="Settings" />
-        <Button fx:id="semester1Button" layoutX="44.0" layoutY="150.0" mnemonicParsing="false" onAction="#Buttons" prefHeight="54.0" prefWidth="178.0" text="1. Semester" />
-        <Button fx:id="semester2Button" layoutX="44.0" layoutY="226.0" mnemonicParsing="false" onAction="#Buttons" prefHeight="54.0" prefWidth="178.0" text="2. Semester" />
-        <Button fx:id="semester3Button" layoutX="44.0" layoutY="300.0" mnemonicParsing="false" onAction="#Buttons" prefHeight="54.0" prefWidth="178.0" text="3. Semester" />
-        <Button fx:id="semester4Button" layoutX="44.0" layoutY="374.0" mnemonicParsing="false" onAction="#Buttons" prefHeight="54.0" prefWidth="178.0" text="4. Semester" />
-        <Button fx:id="semester5Button" layoutX="44.0" layoutY="448.0" mnemonicParsing="false" onAction="#Buttons" prefHeight="54.0" prefWidth="178.0" text="5. Semester" />
-        <Button fx:id="semester6Button" layoutX="44.0" layoutY="520.0" mnemonicParsing="false" onAction="#Buttons" prefHeight="54.0" prefWidth="178.0" text="6. Semester" />
+        <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#switchToAdmin" prefHeight="46.0" prefWidth="100.0" text="Settings">
+            <AnchorPane.bottomAnchor>5.0</AnchorPane.bottomAnchor>
+            <AnchorPane.rightAnchor>5.0</AnchorPane.rightAnchor>
+        </Button>
+        <Button fx:id="semester1Button" mnemonicParsing="false" onAction="#Buttons" prefHeight="54.0" prefWidth="178.0" text="1. Semester">
+            <AnchorPane.topAnchor>130.0</AnchorPane.topAnchor>
+            <AnchorPane.leftAnchor>1.0</AnchorPane.leftAnchor>
+        </Button>
+        <Button fx:id="semester2Button" mnemonicParsing="false" onAction="#Buttons" prefHeight="54.0" prefWidth="178.0" text="2. Semester">
+            <AnchorPane.topAnchor>200.0</AnchorPane.topAnchor>
+            <AnchorPane.leftAnchor>1.0</AnchorPane.leftAnchor>
+        </Button>
+        <Button fx:id="semester3Button" mnemonicParsing="false" onAction="#Buttons" prefHeight="54.0" prefWidth="178.0" text="3. Semester">
+            <AnchorPane.topAnchor>270.0</AnchorPane.topAnchor>
+            <AnchorPane.leftAnchor>1.0</AnchorPane.leftAnchor>
+        </Button>
+        <Button fx:id="semester4Button" mnemonicParsing="false" onAction="#Buttons" prefHeight="54.0" prefWidth="178.0" text="4. Semester">
+            <AnchorPane.topAnchor>340.0</AnchorPane.topAnchor>
+            <AnchorPane.leftAnchor>1.0</AnchorPane.leftAnchor>
+        </Button>
+        <Button fx:id="semester5Button" mnemonicParsing="false" onAction="#Buttons" prefHeight="54.0" prefWidth="178.0" text="5. Semester">
+            <AnchorPane.topAnchor>410.0</AnchorPane.topAnchor>
+            <AnchorPane.leftAnchor>1.0</AnchorPane.leftAnchor>
+        </Button>
+        <Button fx:id="semester6Button" mnemonicParsing="false" onAction="#Buttons" prefHeight="54.0" prefWidth="178.0" text="6. Semester">
+            <AnchorPane.topAnchor>480.0</AnchorPane.topAnchor>
+            <AnchorPane.leftAnchor>1.0</AnchorPane.leftAnchor>
+        </Button>
     </children>
 </AnchorPane>

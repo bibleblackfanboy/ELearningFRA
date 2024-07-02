@@ -12,7 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.sql.SQLException;
 import java.util.Map;
 
-public class MainController {
+public class ModulAdminController {
 
     @FXML
     private TableView<Module> moduleTable;

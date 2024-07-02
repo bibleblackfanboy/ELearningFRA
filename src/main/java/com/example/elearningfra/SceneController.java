@@ -39,6 +39,9 @@ public class SceneController {
         scenes[0] = new Scene(roots[0],800,600);
         //stage.setResizable(false);
         stage.setScene(scenes[0]);
+        stage.setMinWidth(800);
+        stage.setMinHeight(600);
+
         stage.show();
 
         loaders[1] = new FXMLLoader(SceneController.class.getResource("adminlogin.fxml"));
@@ -65,8 +68,7 @@ public class SceneController {
         loaders[8] = new FXMLLoader(SceneController.class.getResource("edit.fxml"));
         roots[8] = loaders[8].load();
 
-        loaders[9] = new FXMLLoader(SceneController.class.getResource("newuser.fxml"));
-        roots[9] = loaders[9].load();
+
 
     }
 

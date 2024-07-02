@@ -62,11 +62,7 @@ public class AdminLoginController {
         errorLabel.setText("");
     }
 
-    @FXML
-    private void switchToNewUser() {
-        clearFields();
-        SceneController.switchToPage(9);
-    }
+
 
     public void switchToHome()
     {

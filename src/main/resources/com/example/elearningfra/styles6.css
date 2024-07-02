@@ -69,3 +69,17 @@
     -fx-border-radius: 5;
     -fx-background-radius: 5;
 }
+
+.required-field {
+    -fx-text-fill: red;
+}
+
+.required-star {
+    -fx-text-fill: red;
+    -fx-font-size: 12px;
+}
+
+.error-message {
+    -fx-text-fill: red;
+}
+

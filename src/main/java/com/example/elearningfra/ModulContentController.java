@@ -60,8 +60,10 @@ public class ModulContentController {
                     Material material = materials.get(0); // Assuming one material for simplicity
                     youtubeButton.setOnAction(event -> openYouTubeVideo(material.getUrl()));
                     Material.updateLocalMaterials(modulId, materials);
+                    System.out.println(material.getUrl());
+                    System.out.println("youtube successful2");
                 }else{
-                    System.out.println("youtube successful");
+                    System.out.println("No Link Found");
                     youtubeButton.setOnAction(event -> openYouTubeVideo("test"));
                 }
             } else {
@@ -79,11 +81,12 @@ public class ModulContentController {
                 if (materials != null && !materials.isEmpty()) {
                     Material material = materials.get(0); // Assuming one material for simplicity
                     youtubeButton.setOnAction(event -> openYouTubeVideo(material.getUrl()));
+                    System.out.println(material.getUrl());
                     System.out.println("youtube successful2");
                 }
                 else
                 {
-                    System.out.println("youtube successful");
+                    System.out.println("No Link Found");
                     youtubeButton.setOnAction(event -> openYouTubeVideo("test"));
                 }
 
@@ -124,7 +127,7 @@ public class ModulContentController {
     private void openYouTubeVideo(String url) {
 
             WebView webView = new WebView();
-            if (url.equals("test")) url = "https://www.youtube.com/embed/j_rlxfghbZ4?si=qxrRCQ2LOQY4E7Nf";
+            if (url.equals("test")) url = "https://www.youtube.com/embed/B4EkwueekvI?si=v3gL0FMvxaKbOZRr";
             webView.getEngine().load(url);
             webView.setPrefSize(640, 390);
 

@@ -9,7 +9,7 @@ import java.util.Map;
 public class Database {
     private static final String URL = "jdbc:mariadb://localhost:3306/elearningfh";
     private static final String USER = "root";
-    private static final String PASSWORD = "1234";
+    private static final String PASSWORD = "2536";
     private static Connection connection;
 
     public static Connection getConnection() throws SQLException {
@@ -207,7 +207,7 @@ public class Database {
                 return rs.getInt("last_id");
             }
         }
-        return -1; // Eğer ID bulunamazsa -1 döner
+        return -1;
     }
 
 
@@ -285,17 +285,32 @@ public class Database {
 
 
 
-    public static void saveUser(String username, String password, String email) throws SQLException {
-        String query = "INSERT INTO benutzer (benutzername, passwort, email, berechtigung) VALUES (?, ?, ?, ?)";
-        try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setString(1, username);
-            stmt.setString(2, password);
-            stmt.setString(3, email);
-            stmt.setString(4, "user");
+    public static void updateProfessor(Professor professor) throws SQLException {
+        String query = "UPDATE professor SET nachname = ?, vorname = ?, email = ?, sprechzimmer = ? WHERE professor_id = ?";
+        try (PreparedStatement stmt = getConnection().prepareStatement(query)) {
+            stmt.setString(1, professor.getNachname());
+            stmt.setString(2, professor.getVorname());
+            stmt.setString(3, professor.getEmail());
+            stmt.setString(4, professor.getSprechzimmer());
+            stmt.setInt(5, professor.getProfessorId());
             stmt.executeUpdate();
         }
     }
+
+    public static void updateMaterial(Material material) throws SQLException {
+        String query = "UPDATE material SET typ = ?, thema = ?, beschreibung = ?, url = ? WHERE material_id = ?";
+        try (PreparedStatement stmt = getConnection().prepareStatement(query)) {
+            stmt.setString(1, material.getTyp());
+            stmt.setString(2, material.getThema());
+            stmt.setString(3, material.getBeschreibung());
+            stmt.setString(4, material.getUrl());
+            stmt.setInt(5, material.getMaterialId());
+            stmt.executeUpdate();
+        }
+    }
+
+
+
 
 
 

@@ -45,23 +45,32 @@ public class AddModuleController {
     private Button addMaterialButton;
     @FXML
     private Button saveButton;
+    @FXML
+    private Label errorMessage;
 
     private List<Professor> professors = new ArrayList<>();
     private List<Material> materials = new ArrayList<>();
 
     @FXML
     private void initialize() {
-        // Semester alanı için varsayılan değeri 1 olarak ayarla
+
         semesterField.getItems().setAll("1", "2", "3", "4", "5", "6");
         semesterField.setValue("1");
 
-        // CP alanı için varsayılan değeri 5 olarak ayarla
         cpField.getItems().setAll("5", "10", "15");
         cpField.setValue("5");
+
+        // Add initial Professor fields
+        handleAddProfessorButton();
     }
 
     @FXML
     private void handleSaveButton() {
+        if (!validateFields()) {
+            errorMessage.setVisible(true);
+            return;
+        }
+
         String moduleName = moduleNameField.getText().isEmpty() ? null : moduleNameField.getText();
         int cp = Integer.parseInt(cpField.getValue());
         String pruefung = pruefungField.getText().isEmpty() ? null : pruefungField.getText();
@@ -95,11 +104,60 @@ public class AddModuleController {
                 Database.addMaterial(material, moduleId);
             }
 
-            // Alanları değiştirilemez yap
             setFieldsDisabled(true);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    private boolean validateFields() {
+        boolean isValid = true;
+
+        if (moduleNameField.getText().isEmpty()) {
+            moduleNameField.setStyle("-fx-border-color: red;");
+            isValid = false;
+        } else {
+            moduleNameField.setStyle(null);
+        }
+
+        if (koordinationField.getText().isEmpty()) {
+            koordinationField.setStyle("-fx-border-color: red;");
+            isValid = false;
+        } else {
+            koordinationField.setStyle(null);
+        }
+
+        if (voraussetzungField.getText().isEmpty()) {
+            voraussetzungField.setStyle("-fx-border-color: red;");
+            isValid = false;
+        } else {
+            voraussetzungField.setStyle(null);
+        }
+
+        // Check if there is at least one professor with a non-empty "Nachname"
+        boolean hasValidProfessor = false;
+        for (int i = 0; i < professorContainer.getChildren().size(); i += 8) {
+            TextField nachnameField = (TextField) professorContainer.getChildren().get(i + 1);
+            if (!nachnameField.getText().isEmpty()) {
+                hasValidProfessor = true;
+                break;
+            }
+        }
+
+        if (!hasValidProfessor) {
+            for (int i = 0; i < professorContainer.getChildren().size(); i += 8) {
+                TextField nachnameField = (TextField) professorContainer.getChildren().get(i + 1);
+                nachnameField.setStyle("-fx-border-color: red;");
+            }
+            isValid = false;
+        } else {
+            for (int i = 0; i < professorContainer.getChildren().size(); i += 8) {
+                TextField nachnameField = (TextField) professorContainer.getChildren().get(i + 1);
+                nachnameField.setStyle(null);
+            }
+        }
+
+        return isValid;
     }
 
     @FXML
@@ -151,10 +209,10 @@ public class AddModuleController {
     }
 
     public void back() throws SQLException {
-        MainController mainController;
+        ModulAdminController modulAdminController;
         FXMLLoader loader = SceneController.getLoader(6);
-        mainController = loader.getController();
-        mainController.loadModules();
+        modulAdminController = loader.getController();
+        modulAdminController.loadModules();
         SceneController.switchToPage(6);
         resetFields();
     }
@@ -173,6 +231,8 @@ public class AddModuleController {
         professorContainer.getChildren().clear();
         materialContainer.getChildren().clear();
         setFieldsDisabled(false);
+        errorMessage.setVisible(false);
+        handleAddProfessorButton(); // Add initial Professor fields again
     }
 }
 

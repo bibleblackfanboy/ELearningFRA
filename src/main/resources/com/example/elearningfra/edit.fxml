@@ -20,7 +20,7 @@
         <!-- Sol Panel: Ders Bilgileri -->
         <VBox prefWidth="400.0" spacing="5.0">
             <Label text="Module Name:" />
-            <TextField fx:id="moduleNameField" />
+            <TextField fx:id="moduleNameField" styleClass="text-field-error" />
 
             <GridPane hgap="10" vgap="5">
                 <Label text="CP:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
@@ -48,17 +48,17 @@
                 </ComboBox>
                 <Label text="Vorleistung:" GridPane.columnIndex="4" GridPane.rowIndex="0" />
                 <CheckBox fx:id="vorleistungField" GridPane.columnIndex="5" GridPane.rowIndex="0" />
-            <columnConstraints>
-               <ColumnConstraints />
-               <ColumnConstraints />
-               <ColumnConstraints />
-               <ColumnConstraints />
-               <ColumnConstraints />
-               <ColumnConstraints />
-            </columnConstraints>
-            <rowConstraints>
-               <RowConstraints />
-            </rowConstraints>
+                <columnConstraints>
+                    <ColumnConstraints />
+                    <ColumnConstraints />
+                    <ColumnConstraints />
+                    <ColumnConstraints />
+                    <ColumnConstraints />
+                    <ColumnConstraints />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints />
+                </rowConstraints>
             </GridPane>
 
             <Label text="Prüfung:" />
@@ -66,11 +66,13 @@
             <Label text="Sprache:" />
             <TextField fx:id="spracheField" />
             <Label text="Koordination:" />
-            <TextField fx:id="koordinationField" />
+            <TextField fx:id="koordinationField" styleClass="text-field-error" />
             <Label text="Verfügbarkeit:" />
             <TextField fx:id="verfuegbarkeitField" />
             <Label text="Voraussetzung:" />
-            <TextField fx:id="voraussetzungField" />
+            <TextField fx:id="voraussetzungField" styleClass="text-field-error" />
+            <!-- Hata Mesajı Etiketi -->
+            <Label fx:id="errorMessage" prefHeight="50.0" prefWidth="399.0" styleClass="error-message" visible="false" />
         </VBox>
         <!-- Sağ Panel: Profesör ve Material Bilgileri -->
         <VBox prefWidth="350.0" spacing="5.0">
@@ -78,15 +80,17 @@
             <ScrollPane fitToWidth="true" prefHeight="100.0" styleClass="scroll-pane">
                 <VBox fx:id="professorContainer" spacing="5.0" />
             </ScrollPane>
+            <Button fx:id="addProfessorButton" onAction="#handleAddProfessor" text="Add Professor" />
             <Label text="Material Details:" />
             <ScrollPane fitToWidth="true" prefHeight="100.0" styleClass="scroll-pane">
                 <VBox fx:id="materialContainer" spacing="5.0" />
             </ScrollPane>
+            <Button fx:id="addMaterialButton" onAction="#handleAddMaterial" text="Add Material" />
             <Label text="Inhalt:" />
             <TextField fx:id="inhaltField" prefHeight="105.0" prefWidth="350.0" />
-          <Button fx:id="backButton" onAction="#back" text="Back" />
-          <!-- Butonlar -->
-          <Button fx:id="saveButton" onAction="#handleSaveButton" text="Save" />
+            <Button fx:id="backButton" onAction="#back" text="Back" />
+            <!-- Butonlar -->
+            <Button fx:id="saveButton" onAction="#handleSaveButton" text="Save" />
         </VBox>
     </HBox>
 </AnchorPane>
