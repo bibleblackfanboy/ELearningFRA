@@ -9,6 +9,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Controller for editing module details in the e-learning application.
+ */
 public class EditModuleController {
     @FXML private TextField moduleNameField;
     @FXML private ComboBox<String> cpField;
@@ -35,14 +38,21 @@ public class EditModuleController {
     private List<Professor> professors = new ArrayList<>();
     private List<Material> materials = new ArrayList<>();
 
+    /**
+     * Initializes the controller class.
+     */
     public void initialize() {
         cpField.getItems().addAll("5", "10", "15", "20");
         cpField.setValue("5");
         semesterField.getItems().addAll("1", "2", "3", "4", "5", "6");
         semesterField.setValue("1");
-        setFieldsDisabled(false); // Sayfa açıldığında alanları aktif hale getiriyoruz
+        setFieldsDisabled(false);
     }
 
+    /**
+     * Loads the module details based on the provided module ID.
+     * @param modulId the ID of the module to load
+     */
     public void loadModuleDetails(int modulId) {
         this.modulId = modulId;
         try {
@@ -74,6 +84,10 @@ public class EditModuleController {
         }
     }
 
+    /**
+     * Adds a professor's details to the user interface.
+     * @param professor the professor to add
+     */
     private void addProfessorToUI(Professor professor) {
         TextField nachnameField = new TextField(professor.getNachname());
         TextField vornameField = new TextField(professor.getVorname());
@@ -81,11 +95,9 @@ public class EditModuleController {
         TextField sprechzimmerField = new TextField(professor.getSprechzimmer());
         Button deleteButton = new Button("Delete");
         deleteButton.setOnAction(e -> {
-            professorContainer.getChildren().remove(nachnameField);
-            professorContainer.getChildren().remove(vornameField);
-            professorContainer.getChildren().remove(emailField);
-            professorContainer.getChildren().remove(sprechzimmerField);
-            professorContainer.getChildren().remove(deleteButton);
+            professorContainer.getChildren().removeAll(
+                    nachnameField, vornameField, emailField, sprechzimmerField, deleteButton
+            );
             try {
                 Database.deleteProfessor(professor.getProfessorId());
                 professors.remove(professor);
@@ -106,6 +118,10 @@ public class EditModuleController {
         );
     }
 
+    /**
+     * Adds material details to the user interface.
+     * @param material the material to add
+     */
     private void addMaterialToUI(Material material) {
         TextField typField = new TextField(material.getTyp());
         TextField themaField = new TextField(material.getThema());
@@ -113,11 +129,9 @@ public class EditModuleController {
         TextField urlField = new TextField(material.getUrl());
         Button deleteButton = new Button("Delete");
         deleteButton.setOnAction(e -> {
-            materialContainer.getChildren().remove(typField);
-            materialContainer.getChildren().remove(themaField);
-            materialContainer.getChildren().remove(beschreibungField);
-            materialContainer.getChildren().remove(urlField);
-            materialContainer.getChildren().remove(deleteButton);
+            materialContainer.getChildren().removeAll(
+                    typField, themaField, beschreibungField, urlField, deleteButton
+            );
             try {
                 Database.deleteMaterial(material.getMaterialId());
                 materials.remove(material);
@@ -138,6 +152,9 @@ public class EditModuleController {
         );
     }
 
+    /**
+     * Handles the save button action to update the module details.
+     */
     @FXML
     private void handleSaveButton() {
         boolean hasError = false;
@@ -182,25 +199,20 @@ public class EditModuleController {
         String inhalt = inhaltField.getText();
 
         try {
-            // Güncellemeleri yapıyoruz
             Database.updateModule(modulId, moduleName, cp, pruefung, semester, sprache, koordination, verfuegbarkeit, voraussetzung, vorleistung, inhalt);
-            // Mevcut professor ve material bilgilerini güncelliyoruz
             for (Professor professor : professors) {
                 Database.updateProfessor(professor);
             }
             for (Material material : materials) {
                 Database.updateMaterial(material);
             }
-            // Yeni eklenen professor ve material bilgilerini ekliyoruz
             for (Professor professor : professors) {
                 if (professor.getProfessorId() == 0) {
-                    // Yeni eklenen professor
                     Database.addProfessor(professor, modulId);
                 }
             }
             for (Material material : materials) {
                 if (material.getMaterialId() == 0) {
-                    // Yeni eklenen material
                     Database.addMaterial(material, modulId);
                 }
             }
@@ -210,20 +222,30 @@ public class EditModuleController {
         }
     }
 
+    /**
+     * Handles the action of adding a new professor.
+     */
     @FXML
     private void handleAddProfessor() {
-        Professor newProfessor = new Professor(0, "", "", "", ""); // Dummy values
+        Professor newProfessor = new Professor(0, "", "", "", "");
         professors.add(newProfessor);
         addProfessorToUI(newProfessor);
     }
 
+    /**
+     * Handles the action of adding new material.
+     */
     @FXML
     private void handleAddMaterial() {
-        Material newMaterial = new Material(0, modulId, "", "", "", ""); // Dummy values
+        Material newMaterial = new Material(0, modulId, "", "", "", "");
         materials.add(newMaterial);
         addMaterialToUI(newMaterial);
     }
 
+    /**
+     * Disables or enables the fields based on the provided flag.
+     * @param disabled true to disable the fields, false to enable them
+     */
     private void setFieldsDisabled(boolean disabled) {
         moduleNameField.setDisable(disabled);
         cpField.setDisable(disabled);
@@ -240,9 +262,12 @@ public class EditModuleController {
         saveButton.setDisable(disabled);
         addProfessorButton.setDisable(disabled);
         addMaterialButton.setDisable(disabled);
-        // backButton artık deaktive edilmeyecek
     }
 
+    /**
+     * Handles the back button action to return to the module admin page.
+     * @throws SQLException if there is an error loading the module admin page
+     */
     @FXML
     private void back() throws SQLException {
         ModulAdminController modulAdminController;
@@ -253,6 +278,9 @@ public class EditModuleController {
         resetFields();
     }
 
+    /**
+     * Resets the fields to their default state.
+     */
     private void resetFields() {
         moduleNameField.clear();
         cpField.setValue("5");
@@ -271,7 +299,6 @@ public class EditModuleController {
         setFieldsDisabled(false);
     }
 }
-
 
 
 

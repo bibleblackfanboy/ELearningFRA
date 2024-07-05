@@ -9,6 +9,9 @@ import javafx.scene.paint.Color;
 
 import java.sql.SQLException;
 
+/**
+ * Controller class for handling the admin login functionality.
+ */
 public class AdminLoginController {
 
     @FXML
@@ -29,6 +32,9 @@ public class AdminLoginController {
     @FXML
     private Label errorLabel;
 
+    /**
+     * Initializes the controller class.
+     */
     @FXML
     public void initialize() {
         errorLabel.setText("");
@@ -36,6 +42,9 @@ public class AdminLoginController {
         passwordField.clear();
     }
 
+    /**
+     * Handles the login button action.
+     */
     @FXML
     private void handleLogin() {
         String username = usernameField.getText();
@@ -45,7 +54,6 @@ public class AdminLoginController {
             if (Database.validateUser(username, password)) {
                 SceneController.switchToPage(6);
                 clearFields();
-                // SceneController.switchToPage(1);
             } else {
                 errorLabel.setTextFill(Color.RED);
                 errorLabel.setText("Incorrect username or password!");
@@ -55,6 +63,9 @@ public class AdminLoginController {
         }
     }
 
+    /**
+     * Handles the cancel button action.
+     */
     @FXML
     private void handleCancel() {
         usernameField.clear();
@@ -62,22 +73,23 @@ public class AdminLoginController {
         errorLabel.setText("");
     }
 
-
-
-    public void switchToHome()
-    {
+    /**
+     * Switches to the home page.
+     */
+    public void switchToHome() {
         clearFields();
         SceneController.switchToPage(0);
     }
 
-    private void clearFields()
-    {
+    /**
+     * Clears the input fields and error message.
+     */
+    private void clearFields() {
         usernameField.clear();
         passwordField.clear();
         errorLabel.setText("");
     }
 }
-
 
 
 

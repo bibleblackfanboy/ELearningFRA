@@ -1,30 +1,26 @@
-
 package com.example.elearningfra;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 
-
-
+/**
+ * Controller for the homepage in the e-learning application.
+ */
 public class HomepageController {
 
-    public void switchToAdmin()
-    {
-    SceneController.switchToPage(1);
+    /**
+     * Switches the scene to the admin page.
+     */
+    public void switchToAdmin() {
+        SceneController.switchToPage(1);
     }
 
-
-    public void switchToModulPage()
-    {
-        SceneController.switchToPage(2);
-    }
-
-
-
-
-
+    /**
+     * Handles button clicks and switches the scene based on the button ID.
+     *
+     * @param event the action event triggered by button click
+     */
     public void Buttons(ActionEvent event) {
         Button clickedButton = (Button) event.getSource();
         String buttonId = clickedButton.getId();
@@ -54,25 +50,18 @@ public class HomepageController {
         }
     }
 
-
-
-    public void switchToModulSelect(int semester)
-    {
+    /**
+     * Switches the scene to the module selection page for the specified semester.
+     *
+     * @param semester the semester number to load modules for
+     */
+    public void switchToModulSelect(int semester) {
         ModulSelectController modulSelectController;
         FXMLLoader loader = SceneController.getLoader(4);
         modulSelectController = loader.getController();
         modulSelectController.loadModules(semester);
         SceneController.switchToPage(4);
     }
-
-
-
-
-
-
-
 }
-
-
 
 

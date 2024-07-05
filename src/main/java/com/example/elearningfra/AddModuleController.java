@@ -13,47 +13,67 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Controller class for adding a module in the eLearning application.
+ */
 public class AddModuleController {
 
     @FXML
     private TextField moduleNameField;
+
     @FXML
     private ComboBox<String> cpField;
+
     @FXML
     private TextField pruefungField;
+
     @FXML
     private ComboBox<String> semesterField;
+
     @FXML
     private TextField spracheField;
+
     @FXML
     private TextField koordinationField;
+
     @FXML
     private TextField verfuegbarkeitField;
+
     @FXML
     private TextField voraussetzungField;
+
     @FXML
     private CheckBox vorleistungField;
+
     @FXML
     private TextField inhaltField;
+
     @FXML
     private VBox professorContainer;
+
     @FXML
     private VBox materialContainer;
+
     @FXML
     private Button addProfessorButton;
+
     @FXML
     private Button addMaterialButton;
+
     @FXML
     private Button saveButton;
+
     @FXML
     private Label errorMessage;
 
     private List<Professor> professors = new ArrayList<>();
     private List<Material> materials = new ArrayList<>();
 
+    /**
+     * Initializes the controller class.
+     */
     @FXML
     private void initialize() {
-
         semesterField.getItems().setAll("1", "2", "3", "4", "5", "6");
         semesterField.setValue("1");
 
@@ -64,6 +84,9 @@ public class AddModuleController {
         handleAddProfessorButton();
     }
 
+    /**
+     * Handles the save button action.
+     */
     @FXML
     private void handleSaveButton() {
         if (!validateFields()) {
@@ -110,6 +133,11 @@ public class AddModuleController {
         }
     }
 
+    /**
+     * Validates the input fields.
+     *
+     * @return true if all required fields are valid, false otherwise.
+     */
     private boolean validateFields() {
         boolean isValid = true;
 
@@ -160,6 +188,9 @@ public class AddModuleController {
         return isValid;
     }
 
+    /**
+     * Handles the action of adding a new professor.
+     */
     @FXML
     private void handleAddProfessorButton() {
         // Add UI elements to enter professor details
@@ -175,6 +206,9 @@ public class AddModuleController {
         );
     }
 
+    /**
+     * Handles the action of adding new material.
+     */
     @FXML
     private void handleAddMaterialButton() {
         // Add UI elements to enter material details
@@ -190,6 +224,11 @@ public class AddModuleController {
         );
     }
 
+    /**
+     * Sets the fields to be disabled or enabled.
+     *
+     * @param disabled true to disable the fields, false to enable.
+     */
     private void setFieldsDisabled(boolean disabled) {
         moduleNameField.setDisable(disabled);
         cpField.setDisable(disabled);
@@ -208,6 +247,11 @@ public class AddModuleController {
         saveButton.setDisable(disabled);
     }
 
+    /**
+     * Navigates back to the module administration page.
+     *
+     * @throws SQLException if a database access error occurs.
+     */
     public void back() throws SQLException {
         ModulAdminController modulAdminController;
         FXMLLoader loader = SceneController.getLoader(6);
@@ -217,6 +261,9 @@ public class AddModuleController {
         resetFields();
     }
 
+    /**
+     * Resets the input fields to their default values.
+     */
     private void resetFields() {
         moduleNameField.clear();
         cpField.setValue("5");
