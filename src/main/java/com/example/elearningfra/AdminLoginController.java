@@ -45,6 +45,7 @@ public class AdminLoginController {
     /**
      * Handles the login button action.
      */
+    //partly from ChatGPT
     @FXML
     private void handleLogin() {
         String username = usernameField.getText();

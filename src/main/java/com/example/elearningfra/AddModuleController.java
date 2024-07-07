@@ -87,6 +87,7 @@ public class AddModuleController {
     /**
      * Handles the save button action.
      */
+    //Partly from ChatGPT
     @FXML
     private void handleSaveButton() {
         if (!validateFields()) {
@@ -138,6 +139,7 @@ public class AddModuleController {
      *
      * @return true if all required fields are valid, false otherwise.
      */
+    //partly from ChatGPT
     private boolean validateFields() {
         boolean isValid = true;
 

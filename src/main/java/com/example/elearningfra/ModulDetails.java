@@ -23,6 +23,7 @@ public class ModulDetails {
     private String inhalt;
     private Timestamp timestampModul;
 
+    //Partly from ChatGPT
     private static Map<Integer, ModulDetails> localModulDetails = new HashMap<>();
 
     /**

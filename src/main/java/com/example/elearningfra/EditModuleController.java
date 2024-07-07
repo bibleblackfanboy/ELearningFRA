@@ -131,7 +131,7 @@ public class EditModuleController {
         deleteButton.setOnAction(e -> {
             materialContainer.getChildren().removeAll(
                     typField, themaField, beschreibungField, urlField, deleteButton
-            );
+            );  //this part is partly from ChatGPT
             try {
                 Database.deleteMaterial(material.getMaterialId());
                 materials.remove(material);
@@ -155,6 +155,7 @@ public class EditModuleController {
     /**
      * Handles the save button action to update the module details.
      */
+    //partly from ChatGPT
     @FXML
     private void handleSaveButton() {
         boolean hasError = false;

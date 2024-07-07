@@ -47,6 +47,7 @@ public class ModulContentController {
         try {
             Timestamp dbTimestamp = Database.getModulTimestamp(modulId);
             Timestamp localTimestamp = ModulDetails.getLocalModulDetails(modulId) != null ? ModulDetails.getLocalModulDetails(modulId).getTimestampModul() : null;
+            //statement is from ChatGPT
             if (dbTimestamp != null && (localTimestamp == null || dbTimestamp.after(localTimestamp))) {
                 System.out.println("Data from database");
                 ModulDetails modulDetails = Database.getModulDetails(modulId);

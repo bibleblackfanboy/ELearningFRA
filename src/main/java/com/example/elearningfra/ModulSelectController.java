@@ -51,6 +51,7 @@ public class ModulSelectController {
      *
      * @param moduleNames A map of module IDs to module names.
      */
+    //partly from ChatGPT
     private void createButtons(Map<Integer, String> moduleNames) {
         anchorPane.getChildren().clear();
         int yOffset = 10;

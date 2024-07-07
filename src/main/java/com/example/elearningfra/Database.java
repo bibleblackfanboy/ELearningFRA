@@ -20,6 +20,7 @@ public class Database {
      * @return the connection to the database
      * @throws SQLException if a database access error occurs
      */
+    //From ChatGPT
     public static Connection getConnection() throws SQLException {
         if (connection == null || connection.isClosed()) {
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
@@ -33,6 +34,7 @@ public class Database {
      * @return a map of module IDs and their corresponding names
      * @throws SQLException if a database access error occurs
      */
+    //partly from ChatGPT
     public static Map<Integer, String> getModuleNames(int semester) throws SQLException {
         Map<Integer, String> moduleNames = new HashMap<>();
         String query = "SELECT modul_id, modul_name FROM modul WHERE semester = ?";
@@ -304,6 +306,7 @@ public class Database {
      * @param moduleId the ID of the module
      * @throws SQLException if a database access error occurs
      */
+    //from ChatGPT
     private static void linkProfessorToModule(int professorId, int moduleId) throws SQLException {
         String query = "INSERT INTO lehrt (professor_id, modul_id) VALUES (?, ?)";
         try (PreparedStatement stmt = getConnection().prepareStatement(query)) {

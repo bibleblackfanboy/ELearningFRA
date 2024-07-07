@@ -36,6 +36,7 @@ public class ModulAdminController {
     @FXML
     private Button addButton;
 
+    //from ChatGPT
     private ObservableList<Module> moduleList = FXCollections.observableArrayList();
 
     /**
@@ -61,6 +62,7 @@ public class ModulAdminController {
      *
      * @throws SQLException if a database access error occurs
      */
+
     public void loadModules() throws SQLException {
         moduleList.clear();
         Map<Integer, String> modules = Database.getAllModuleNames();
@@ -76,7 +78,7 @@ public class ModulAdminController {
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
-            });
+            }); //this part is from ChatGPT
             moduleList.add(new Module(id, name, deleteButton, editButton));
         }
         moduleTable.setItems(moduleList);
